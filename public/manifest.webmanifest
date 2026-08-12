@@ -1,0 +1,10 @@
+{
+  "name": "靜靜樹懶靜坐日記｜Quiet Sloth Meditation Journal",
+  "short_name": "靜靜樹懶",
+  "lang": "zh-TW",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#f7f1e5",
+  "theme_color": "#f7f1e5",
+  "icons": []
+}
