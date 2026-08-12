@@ -60,6 +60,17 @@ test('required artwork is present and non-empty', async () => {
   assert.ok(logo.size > 10_000, 'quiet-sloth-logo.webp is unexpectedly small')
 })
 
+test('journal section uses the six-step mobile guide without forced title breaks', async () => {
+  const home = await read('src/pages/HomePage.tsx')
+  const css = await read('src/styles.css')
+  const guide = await stat(join(root, 'public/images/quiet-sloth-mobile-guide.png'))
+  assert.ok(guide.size > 10_000, 'quiet-sloth-mobile-guide.png is unexpectedly small')
+  assert.ok(home.includes("withBase('images/quiet-sloth-mobile-guide.png')"))
+  assert.ok(home.includes('alt="靜靜樹懶靜坐日記手機使用教學"'))
+  assert.ok(home.includes('<h2 id="journal-title">每一次安靜，都留下痕跡。</h2>'))
+  assert.ok(css.includes('.journal-visual img { width: 100%; height: auto; object-fit: contain; }'))
+})
+
 test('header and footer share the official Quiet Sloth logo component', async () => {
   const header = await read('src/components/SiteHeader.tsx')
   const footer = await read('src/components/SiteFooter.tsx')

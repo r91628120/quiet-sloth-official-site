@@ -86,11 +86,11 @@ export function HomePage() {
 
       <section className="section journal" aria-labelledby="journal-title">
         <div className="journal-visual reveal">
-          <img loading="lazy" src={withBase('images/app-growth-overview.webp')} width="1000" height="800" alt="靜靜樹懶 App 的日曆、記錄與花園成長畫面概覽" />
+          <img loading="lazy" src={withBase('images/quiet-sloth-mobile-guide.png')} width="1024" height="1536" alt="靜靜樹懶靜坐日記手機使用教學" />
         </div>
         <div className="section-copy reveal">
           <p className="eyebrow">Journal &amp; Calendar</p>
-          <h2 id="journal-title">每一次安靜，<br />都留下痕跡。</h2>
+          <h2 id="journal-title">每一次安靜，都留下痕跡。</h2>
           <p>有些日子，不需要記得多完整。</p>
           <p className="gentle-line">只要知道——<br />你曾經回來過。</p>
           <div className="feature-tags" aria-label="記錄功能">
