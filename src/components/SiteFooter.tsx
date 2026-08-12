@@ -1,12 +1,13 @@
 import { downloadLinks, MIRACLE_MIND_URL, SUPPORT_EMAIL } from '../config/links'
-import { locales, messages } from '../i18n'
+import { locales } from '../i18n'
+import { useLanguage } from '../i18n/useLanguage'
 import { withBase } from '../utils'
 import { QuietSlothLogo } from './QuietSlothLogo'
 
-const t = messages['zh-TW']
-
 export function SiteFooter() {
+  const { currentLocale, t } = useLanguage()
   const contactHref = SUPPORT_EMAIL ? `mailto:${SUPPORT_EMAIL}` : withBase('support/')
+  const labelFor = (link: (typeof downloadLinks)[number]) => link.id === 'lineStickers' && currentLocale === 'en' ? 'LINE Stickers' : link.label
 
   return (
     <footer className="site-footer">
@@ -15,39 +16,39 @@ export function SiteFooter() {
           <div className="footer-brand__identity">
             <QuietSlothLogo placement="footer" />
             <div>
-              <strong>{t.brand.name}</strong>
-              <span>{t.brand.englishName}</span>
+              <strong>{t('brand.name')}</strong>
+              <span>{t('brand.englishName')}</span>
             </div>
           </div>
-          {MIRACLE_MIND_URL ? <a href={MIRACLE_MIND_URL}>{t.brand.parent}</a> : <p>{t.brand.parent}</p>}
+          {MIRACLE_MIND_URL ? <a href={MIRACLE_MIND_URL}>{t('brand.parent')}</a> : <p>{t('brand.parent')}</p>}
         </div>
         <div>
-          <h2>網站</h2>
-          <a href={withBase('guide/')}>使用說明</a>
-          <a href={withBase('support/')}>支援中心</a>
-          <a href={withBase('privacy/')}>隱私權政策</a>
-          <a href={withBase('terms/')}>使用條款</a>
-          <a href={withBase('health/')}>健康聲明</a>
-          <a href={contactHref}>聯絡我們</a>
+          <h2>{t('footer.explore')}</h2>
+          <a href={withBase('guide/')}>{t('footer.guide')}</a>
+          <a href={withBase('support/')}>{t('footer.support')}</a>
+          <a href={withBase('privacy/')}>{t('footer.privacy')}</a>
+          <a href={withBase('terms/')}>{t('footer.terms')}</a>
+          <a href={withBase('health/')}>{t('footer.health')}</a>
+          <a href={contactHref}>{t('footer.contact')}</a>
         </div>
         <div>
-          <h2>下載</h2>
+          <h2>{t('footer.download')}</h2>
           {downloadLinks.map((link) =>
-            link.href ? <a href={link.href} key={link.label}>{link.label}</a> : <span key={link.label}>{link.label} · 即將推出</span>,
+            link.href ? <a href={link.href} key={link.id}>{labelFor(link)}</a> : <span key={link.id}>{labelFor(link)} · {t('common.comingSoon')}</span>,
           )}
         </div>
         <div>
-          <h2>語言</h2>
+          <h2>{t('language.heading')}</h2>
           {locales.map((locale) => (
             <span key={locale.code} lang={locale.code}>
-              {locale.label}{locale.ready ? '' : ' · Coming soon'}
+              {locale.label}
             </span>
           ))}
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2026 Miracle Mind 奇蹟心靈.</span>
-        <span>All rights reserved.</span>
+        <span>{t('footer.rights1')}</span>
+        <span>{t('footer.rights2')}</span>
       </div>
     </footer>
   )
