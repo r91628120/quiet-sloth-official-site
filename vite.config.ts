@@ -13,6 +13,7 @@ export default defineConfig({
         terms: resolve(import.meta.dirname, 'terms/index.html'),
         health: resolve(import.meta.dirname, 'health/index.html'),
         guide: resolve(import.meta.dirname, 'guide/index.html'),
+        test: resolve(import.meta.dirname, 'test/index.html'),
         notFound: resolve(import.meta.dirname, '404.html'),
       },
     },

@@ -13,11 +13,12 @@ const pages = [
   ['privacy/index.html', 'privacy/', '隱私權政策｜靜靜樹懶靜坐日記'],
   ['terms/index.html', 'terms/', '使用條款｜靜靜樹懶靜坐日記'],
   ['health/index.html', 'health/', '健康聲明｜靜靜樹懶靜坐日記'],
+  ['test/index.html', 'test/', '封閉測試體驗｜靜靜樹懶靜坐日記'],
 ]
 
 const read = (path) => readFile(join(root, path), 'utf8')
 
-test('six Traditional Chinese pages expose complete search and social metadata', async () => {
+test('seven Traditional Chinese pages expose complete search and social metadata', async () => {
   for (const [file, route, title] of pages) {
     const html = await read(file)
     const canonical = `${baseUrl}${route}`
@@ -51,7 +52,7 @@ test('home page WebSite JSON-LD identifies all formal brand names', async () => 
   assert.equal(data.url, baseUrl)
 })
 
-test('sitemap and robots expose exactly the six crawlable primary-site pages', async () => {
+test('sitemap and robots expose exactly the seven crawlable primary-site pages', async () => {
   const sitemap = await read('public/sitemap.xml')
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
   assert.deepEqual(urls.sort(), pages.map(([, route]) => `${baseUrl}${route}`).sort())

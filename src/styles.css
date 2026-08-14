@@ -207,6 +207,25 @@ body:has(.page-hero) .language-switcher { border-color: rgba(74,52,34,.35); back
 .not-found p:not(.eyebrow) { color: var(--brown-soft); }
 .primary-button { justify-self: center; margin-top: 1.5rem; padding: .85rem 1.5rem; border-radius: 999px; background: var(--sage-dark); color: #fff; text-decoration: none; }
 
+.test-page { width: min(100% - 2rem, 1100px); margin: 0 auto; padding: 5rem 0 8rem; }
+.test-page__intro { max-width: 760px; margin: 0 auto 4rem; text-align: center; }
+.test-page__intro p { color: var(--brown-soft); font-size: 1.06rem; line-height: 2; }
+.test-steps { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+.test-step { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: clamp(1.25rem, 4vw, 3rem); padding: clamp(1.6rem, 4vw, 3.25rem); border: 1px solid var(--line); border-radius: 1.8rem; background: rgba(255,255,255,.66); }
+.test-step__number { color: var(--sage-dark); font-size: 1.6rem; font-weight: 600; letter-spacing: .08em; }
+.test-step h2, .test-feedback h2 { margin-bottom: 1rem; color: var(--brown); font-size: clamp(1.65rem, 3vw, 2.35rem); }
+.test-step p, .test-step li, .test-feedback p { color: var(--brown-soft); line-height: 1.9; }
+.test-step__detail { display: flex; flex-wrap: wrap; gap: .35rem 1rem; margin-top: 1.25rem; }
+.test-step__detail span { overflow-wrap: anywhere; }
+.test-button { display: inline-flex; align-items: center; justify-content: center; }
+.test-button--disabled { cursor: default; background: var(--sage-pale); color: var(--brown-soft); }
+.test-step__note { margin-top: 1.25rem; padding: 1rem 1.2rem; border-radius: 1rem; background: var(--cream); }
+.test-checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 1.5rem; margin: 1.5rem 0 2rem; padding: 0; list-style: none; }
+.test-checklist li { position: relative; padding-left: 1.4rem; }
+.test-checklist li::before { content: '•'; position: absolute; left: .2rem; color: var(--sage-dark); }
+.test-step__closing { padding-top: 1rem; border-top: 1px solid var(--line); }
+.test-feedback { margin-top: 4rem; padding: clamp(2rem, 5vw, 4rem); border-radius: 1.8rem; background: linear-gradient(135deg, #e6eddf, #f7f0e3); text-align: center; }
+
 .reveal { animation: reveal .9s ease-out both; }
 @keyframes reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
@@ -240,6 +259,11 @@ body:has(.page-hero) .language-switcher { border-color: rgba(74,52,34,.35); back
   .quiet-sloth-logo--header { width: 36px; height: 36px; }
   .nav-support { padding: .5rem .75rem; }
   .language-switcher { padding-inline: .55rem 1.25rem; }
+  .test-page { padding: 3.5rem 0 5rem; }
+  .test-step { grid-template-columns: 1fr; border-radius: 1.3rem; }
+  .test-step__number { font-size: 1.25rem; }
+  .test-checklist { grid-template-columns: 1fr; }
+  .test-button { width: 100%; }
   .hero { min-height: 820px; align-items: end; }
   .hero-image { object-position: 57% center; }
   .hero-shade { background: linear-gradient(0deg, rgba(21,27,15,.82), rgba(28,31,17,.05) 78%); }

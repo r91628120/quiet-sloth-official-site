@@ -35,12 +35,26 @@ function localeEntries(source, variableName) {
 }
 
 test('all formal static routes have an HTML entry', async () => {
-  const routes = ['index.html', 'support/index.html', 'privacy/index.html', 'terms/index.html', 'health/index.html', 'guide/index.html', '404.html']
+  const routes = ['index.html', 'support/index.html', 'privacy/index.html', 'terms/index.html', 'health/index.html', 'guide/index.html', 'test/index.html', '404.html']
   for (const route of routes) {
     const html = await read(route)
     assert.match(html, /<div id="root"><\/div>/)
     assert.match(html, /src="\/src\/main\.tsx"/)
   }
+})
+
+test('closed testing page has a static route without exposing a promotion code', async () => {
+  const app = await read('src/App.tsx')
+  const page = await read('src/pages/TestPage.tsx')
+  const vite = await read('vite.config.ts')
+  assert.ok(app.includes("'/test': TestPage"))
+  assert.ok(vite.includes("test: resolve(import.meta.dirname, 'test/index.html')"))
+  assert.ok(page.includes('https://play.google.com/apps/testing/com.miracle.quietsloth'))
+  assert.ok(page.includes('target="_blank" rel="noopener noreferrer"'))
+  assert.ok(page.includes('quiet-sloth-test@googlegroups.com'))
+  assert.ok(page.includes('加入封閉測試團・即將開放'))
+  assert.ok(page.includes("href={withBase('support/')}"))
+  assert.doesNotMatch(page, /groups\.google\.com\/|promoCode|promotionCode|優惠碼\s*[:：=]\s*[A-Z0-9-]{6,}/i)
 })
 
 test('download URLs are centralized and unannounced links remain empty', async () => {
