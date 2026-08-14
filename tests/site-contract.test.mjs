@@ -113,7 +113,7 @@ test('major home section headings share desktop semantic breaks and responsive t
   for (const key of ['reminderTitleLine1', 'reminderTitleLine2', 'journalTitleLine1', 'journalTitleLine2', 'privacyTitleLine1', 'privacyTitleLine2']) assert.ok(home.includes(`t('home.${key}')`))
   for (const phrase of ['安靜坐著，', '不需要一直看時間。', '每一次安靜，', '都留下痕跡。', '安靜，', '也包含隱私。']) assert.ok(zhTW.includes(phrase))
   assert.ok(css.includes(".section h2, .section-heading h2 { margin-bottom: 1.6rem; color: var(--brown); font-size: clamp(2.15rem, 4.5vw, 4rem); line-height: 1.3; }"))
-  assert.ok(css.includes('.desktop-heading-line { white-space: nowrap; }'))
+  assert.ok(css.includes('.desktop-heading-line { white-space: normal; }'))
   assert.ok(css.includes('.desktop-heading-break { display: block; }'))
   assert.ok(css.includes('@media (max-width: 900px)'))
   assert.ok(css.includes('  .desktop-heading-line { white-space: normal; }'))

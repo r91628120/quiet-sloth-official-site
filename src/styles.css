@@ -84,7 +84,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .section { width: min(100% - 2rem, 1240px); margin-inline: auto; padding-block: clamp(5rem, 10vw, 9rem); }
 .section h2, .section-heading h2 { margin-bottom: 1.6rem; color: var(--brown); font-size: clamp(2.15rem, 4.5vw, 4rem); line-height: 1.3; }
-.desktop-heading-line { white-space: nowrap; }
+.desktop-heading-line { white-space: normal; }
 .desktop-heading-break { display: block; }
 .section-copy { min-width: 0; max-width: 33rem; }
 .section-copy > p:not(.eyebrow), .section-heading > p:not(.eyebrow) { color: var(--brown-soft); font-size: 1.04rem; }
