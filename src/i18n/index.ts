@@ -14,7 +14,7 @@ export const locales = [
   { code: 'en', label: 'English', shortLabel: 'EN', ready: true },
   { code: 'ja', label: '日本語', shortLabel: '日本語', ready: true },
   { code: 'ko', label: '한국어', shortLabel: '한국어', ready: true },
-  { code: 'th', label: 'ภาษาไทย', shortLabel: 'ไทย', ready: false },
+  { code: 'th', label: 'ภาษาไทย', shortLabel: 'ไทย', ready: true },
 ] as const
 
 export const messages: Record<LocaleCode, PartialTranslationTree> = {

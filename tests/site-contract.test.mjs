@@ -52,12 +52,12 @@ test('download URLs are centralized and unannounced links remain empty', async (
   assert.doesNotMatch(source, /apps\.apple\.com|play\.google\.com|line\.me/)
 })
 
-test('five-locale structure exposes reviewed Traditional Chinese, English, Japanese, and Korean content', async () => {
+test('five-locale structure exposes reviewed Traditional Chinese, English, Japanese, Korean, and Thai content', async () => {
   const source = await read('src/i18n/index.ts')
   for (const locale of ['zh-TW', 'en', 'ja', 'ko', 'th']) assert.ok(source.includes(`'${locale}'`))
   assert.match(source, /code: 'zh-TW', label: '繁體中文', shortLabel: '繁中', ready: true/)
   assert.match(source, /code: 'en', label: 'English', shortLabel: 'EN', ready: true/)
-  assert.equal((source.match(/ready: false/g) ?? []).length, 1)
+  assert.equal((source.match(/ready: false/g) ?? []).length, 0)
 })
 
 test('required brand and product principles are present', async () => {
@@ -169,11 +169,12 @@ test('i18n runtime contracts provide safe fallback, persistence, and five langua
   assert.ok(main.includes('<LanguageProvider><App /></LanguageProvider>'))
 })
 
-test('English, Japanese, and Korean locales are complete while Thai stays a phase-one placeholder', async () => {
+test('English, Japanese, Korean, and Thai locales are complete', async () => {
   const zhTW = localeEntries(await read('src/i18n/locales/zh-TW.ts'), 'zhTW')
   const english = localeEntries(await read('src/i18n/locales/en.ts'), 'en')
   const japanese = localeEntries(await read('src/i18n/locales/ja.ts'), 'ja')
   const korean = localeEntries(await read('src/i18n/locales/ko.ts'), 'ko')
+  const thai = localeEntries(await read('src/i18n/locales/th.ts'), 'th')
   assert.deepEqual([...english.keys()], [...zhTW.keys()])
   assert.equal([...english.values()].filter((value) => value.trim().length === 0).length, 0)
   assert.equal([...english.keys()].filter((key) => !zhTW.has(key)).length, 0)
@@ -196,10 +197,11 @@ test('English, Japanese, and Korean locales are complete while Thai stays a phas
   assert.equal([...korean.keys()].filter((key) => !zhTW.has(key)).length, 0)
   assert.equal([...zhTW.keys()].filter((key) => !korean.has(key)).length, 0)
   assert.deepEqual([...korean].filter(([, value]) => /[\u3040-\u30ff]|靜|樹懶|奇蹟|心/u.test(value)), [])
-  for (const locale of ['th']) {
-    const source = await read(`src/i18n/locales/${locale}.ts`)
-    assert.match(source, new RegExp(`export const ${locale} = \\{\\}`))
-  }
+  assert.deepEqual([...thai.keys()], [...zhTW.keys()])
+  assert.equal([...thai.values()].filter((value) => value.trim().length === 0).length, 0)
+  assert.equal([...thai.keys()].filter((key) => !zhTW.has(key)).length, 0)
+  assert.equal([...zhTW.keys()].filter((key) => !thai.has(key)).length, 0)
+  assert.deepEqual([...thai].filter(([, value]) => /[\u3040-\u30ff\u3400-\u9fff]/u.test(value)), [])
   const switcher = await read('src/components/LanguageSwitcher.tsx')
   assert.doesNotMatch(switcher, /location|history|navigate|reload/)
   const footer = await read('src/components/SiteFooter.tsx')
