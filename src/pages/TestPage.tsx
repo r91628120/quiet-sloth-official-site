@@ -59,10 +59,11 @@ export function TestPage() {
             <span className="test-step__number" aria-hidden="true">03</span>
             <div>
               <p className="eyebrow">STEP 3</p>
-              <h2>免費取得測試 App</h2>
-              <p>正式 App 為付費 App。封閉測試期間，受邀測試者可以免費取得測試版本。</p>
-              <p>完成前面的步驟後，請使用我們提供給你的專屬測試優惠碼，即可免費取得 App。</p>
-              <p className="test-step__note">每組優惠碼僅提供給一位受邀測試夥伴使用，請不要公開分享。</p>
+              <h2>安裝並開始測試 App</h2>
+              <p>完成前面的步驟後，即可前往 Google Play 安裝《靜靜樹懶靜坐日記》封閉測試版本。</p>
+              <p>封閉測試期間，歡迎實際體驗靜坐計時、靜坐日記、心情與身體感受記錄、心光成長等功能。</p>
+              <p>若在安裝、購買測試或使用 App 的過程中遇到任何問題，也歡迎將你的使用情況回饋給我們。</p>
+              <p className="test-step__note"><strong>🌿 測試期間不會實際收費</strong><br />若 Google Play 顯示購買畫面，請選擇「測試卡片，一律核准」完成測試訂單。這是 Google Play 的測試購買流程，不會向你實際收取 App 費用。</p>
             </div>
           </li>
 
