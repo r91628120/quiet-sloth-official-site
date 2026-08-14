@@ -52,12 +52,12 @@ test('download URLs are centralized and unannounced links remain empty', async (
   assert.doesNotMatch(source, /apps\.apple\.com|play\.google\.com|line\.me/)
 })
 
-test('five-locale structure exposes only reviewed Traditional Chinese content', async () => {
+test('five-locale structure exposes reviewed Traditional Chinese, English, and Japanese content', async () => {
   const source = await read('src/i18n/index.ts')
   for (const locale of ['zh-TW', 'en', 'ja', 'ko', 'th']) assert.ok(source.includes(`'${locale}'`))
   assert.match(source, /code: 'zh-TW', label: '繁體中文', shortLabel: '繁中', ready: true/)
   assert.match(source, /code: 'en', label: 'English', shortLabel: 'EN', ready: true/)
-  assert.equal((source.match(/ready: false/g) ?? []).length, 3)
+  assert.equal((source.match(/ready: false/g) ?? []).length, 2)
 })
 
 test('required brand and product principles are present', async () => {
@@ -169,9 +169,10 @@ test('i18n runtime contracts provide safe fallback, persistence, and five langua
   assert.ok(main.includes('<LanguageProvider><App /></LanguageProvider>'))
 })
 
-test('English locale is complete while phase-one locale placeholders stay empty', async () => {
+test('English and Japanese locales are complete while remaining phase-one locales stay empty', async () => {
   const zhTW = localeEntries(await read('src/i18n/locales/zh-TW.ts'), 'zhTW')
   const english = localeEntries(await read('src/i18n/locales/en.ts'), 'en')
+  const japanese = localeEntries(await read('src/i18n/locales/ja.ts'), 'ja')
   assert.deepEqual([...english.keys()], [...zhTW.keys()])
   assert.equal([...english.values()].filter((value) => value.trim().length === 0).length, 0)
   assert.equal([...english.keys()].filter((key) => !zhTW.has(key)).length, 0)
@@ -184,7 +185,12 @@ test('English locale is complete while phase-one locale placeholders stay empty'
   assert.equal(english.get('home.planetEyebrow'), 'Heart Planet')
   assert.equal(english.get('content.healthTitle'), 'Health Disclaimer')
   assert.match(english.get('home.journalImageAlt'), /Traditional Chinese/)
-  for (const locale of ['ja', 'ko', 'th']) {
+  assert.deepEqual([...japanese.keys()], [...zhTW.keys()])
+  assert.equal([...japanese.values()].filter((value) => value.trim().length === 0).length, 0)
+  assert.equal([...japanese.keys()].filter((key) => !zhTW.has(key)).length, 0)
+  assert.equal([...zhTW.keys()].filter((key) => !japanese.has(key)).length, 0)
+  assert.deepEqual([...japanese].filter(([, value]) => /靜|樹懶|繁體|隱私權|裝置端/u.test(value)), [])
+  for (const locale of ['ko', 'th']) {
     const source = await read(`src/i18n/locales/${locale}.ts`)
     assert.match(source, new RegExp(`export const ${locale} = \\{\\}`))
   }

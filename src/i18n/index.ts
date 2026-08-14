@@ -12,7 +12,7 @@ export const LOCALE_STORAGE_KEY = 'quiet-sloth-locale'
 export const locales = [
   { code: 'zh-TW', label: '繁體中文', shortLabel: '繁中', ready: true },
   { code: 'en', label: 'English', shortLabel: 'EN', ready: true },
-  { code: 'ja', label: '日本語', shortLabel: '日本語', ready: false },
+  { code: 'ja', label: '日本語', shortLabel: '日本語', ready: true },
   { code: 'ko', label: '한국어', shortLabel: '한국어', ready: false },
   { code: 'th', label: 'ภาษาไทย', shortLabel: 'ไทย', ready: false },
 ] as const
