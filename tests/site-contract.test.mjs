@@ -52,9 +52,9 @@ test('closed testing page has a static route without exposing a promotion code',
   assert.ok(page.includes('https://play.google.com/apps/testing/com.miracle.quietsloth'))
   assert.ok(page.includes('target="_blank" rel="noopener noreferrer"'))
   assert.ok(page.includes('quiet-sloth-test@googlegroups.com'))
-  assert.ok(page.includes('加入封閉測試團・即將開放'))
+  assert.ok(page.includes('<a className="primary-button test-button" href="https://groups.google.com/g/quiet-sloth-test" target="_blank" rel="noopener noreferrer">加入封閉測試團</a>'))
   assert.ok(page.includes("href={withBase('support/')}"))
-  assert.doesNotMatch(page, /groups\.google\.com\/|promoCode|promotionCode|優惠碼\s*[:：=]\s*[A-Z0-9-]{6,}/i)
+  assert.doesNotMatch(page, /promoCode|promotionCode|優惠碼\s*[:：=]\s*[A-Z0-9-]{6,}/i)
 })
 
 test('download URLs are centralized and unannounced links remain empty', async () => {

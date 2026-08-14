@@ -41,7 +41,7 @@ export function TestPage() {
               <h2>加入「靜靜樹懶靜坐日記 APP 封閉測試團」</h2>
               <p>測試資格目前透過 Google 群組管理。請先加入封閉測試團，再進入 Google Play 測試頁面。</p>
               <p className="test-step__detail"><strong>Google Group</strong><span>quiet-sloth-test@googlegroups.com</span></p>
-              <span className="primary-button test-button test-button--disabled" aria-disabled="true">加入封閉測試團・即將開放</span>
+              <a className="primary-button test-button" href="https://groups.google.com/g/quiet-sloth-test" target="_blank" rel="noopener noreferrer">加入封閉測試團</a>
             </div>
           </li>
 
