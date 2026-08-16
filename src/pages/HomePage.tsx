@@ -168,6 +168,56 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="section philosophy" aria-labelledby="philosophy-title">
+        <div className="section-heading reveal">
+          <p className="eyebrow">{t('home.philosophyEyebrow')}</p>
+          <h2 id="philosophy-title">{t('home.philosophyTitle')}</h2>
+          <p>{t('home.philosophyDescriptionLine1')}<br />{t('home.philosophyDescriptionLine2')}</p>
+        </div>
+        <div className="philosophy-grid">
+          <article className="philosophy-card reveal">
+            <span className="philosophy-card__number" aria-hidden="true">01</span>
+            <h3>{t('home.philosophyCard1Title')}</h3>
+            <p>{t('home.philosophyCard1Description1')}</p>
+            <p>{t('home.philosophyCard1Description2')}</p>
+            <p>{t('home.philosophyCard1Description3')}</p>
+            <p>{t('home.philosophyCard1Description4')}</p>
+          </article>
+          <article className="philosophy-card reveal">
+            <span className="philosophy-card__number" aria-hidden="true">02</span>
+            <h3>{t('home.philosophyCard2Title')}</h3>
+            <p>{t('home.philosophyCard2Description1')}</p>
+            <p>{t('home.philosophyCard2Description2')}</p>
+            <p>{t('home.philosophyCard2Description3')}</p>
+            <p>{t('home.philosophyCard2Description4')}</p>
+            <p className="philosophy-card__emphasis">{t('home.philosophyCard2Emphasis')}</p>
+          </article>
+          <article className="philosophy-card reveal">
+            <span className="philosophy-card__number" aria-hidden="true">03</span>
+            <h3>{t('home.philosophyCard3Title')}</h3>
+            <p>{t('home.philosophyCard3Description1')}</p>
+            <p>{t('home.philosophyCard3Description2')}</p>
+            <p>{t('home.philosophyCard3Description3')}</p>
+            <p>{t('home.philosophyCard3Description4')}</p>
+            <div className="philosophy-flow" aria-label={t('home.philosophyCard3FlowLabel')}>
+              {[t('home.philosophyCard3Flow1'), t('home.philosophyCard3Flow2'), t('home.philosophyCard3Flow3'), t('home.philosophyCard3Flow4')].map((step, index) => (
+                <span key={step}>{index > 0 && <i aria-hidden="true">→</i>}{step}</span>
+              ))}
+            </div>
+            <p className="philosophy-card__emphasis">{t('home.philosophyCard3Emphasis')}</p>
+          </article>
+          <article className="philosophy-card reveal">
+            <span className="philosophy-card__number" aria-hidden="true">04</span>
+            <h3>{t('home.philosophyCard4Title')}</h3>
+            <p>{t('home.philosophyCard4Description1')}</p>
+            <p>{t('home.philosophyCard4Description2')}</p>
+            <p>{t('home.philosophyCard4Description3')}</p>
+            <p>{t('home.philosophyCard4Description4')}</p>
+            <p className="philosophy-card__emphasis">{t('home.philosophyCard4Emphasis')}</p>
+          </article>
+        </div>
+      </section>
+
       <section className="final-cta" aria-labelledby="final-title">
         <img loading="lazy" src={withBase('images/quiet-sloth-garden-hero-941.webp')} width="941" height="1672" alt={t('home.finalImageAlt')} />
         <div className="final-cta__shade" />
