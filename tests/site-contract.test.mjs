@@ -59,7 +59,8 @@ test('closed testing page has a static route without exposing a promotion code',
 
 test('download URLs are centralized and unannounced links remain empty', async () => {
   const config = await read('src/config/links.ts')
-  for (const name of ['APP_STORE_URL', 'GOOGLE_PLAY_URL', 'LINE_STICKERS_URL', 'SUPPORT_EMAIL', 'MIRACLE_MIND_URL']) {
+  assert.match(config, /export const APP_STORE_URL = 'https:\/\/apps\.apple\.com\/tw\/app\/%E9%9D%9C%E9%9D%9C%E6%A8%B9%E6%87%B6%E9%9D%9C%E5%9D%90%E6%97%A5%E8%A8%98\/id6799450042'/)
+  for (const name of ['GOOGLE_PLAY_URL', 'LINE_STICKERS_URL', 'SUPPORT_EMAIL', 'MIRACLE_MIND_URL']) {
     assert.match(config, new RegExp(`export const ${name} = ''`))
   }
   const source = await read('src/pages/HomePage.tsx')
