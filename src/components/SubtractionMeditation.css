@@ -1,0 +1,270 @@
+.subtraction {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 9vw, 8rem) 1rem;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(200, 221, 189, .42), transparent 30%),
+    radial-gradient(circle at 88% 84%, rgba(237, 216, 185, .38), transparent 32%),
+    linear-gradient(180deg, #f8f6ef 0%, #f3efe5 100%);
+}
+
+.subtraction::before,
+.subtraction::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.subtraction::before {
+  width: 18rem;
+  height: 18rem;
+  top: -7rem;
+  left: -5rem;
+  border: 1px solid rgba(86, 113, 78, .14);
+}
+
+.subtraction::after {
+  width: 24rem;
+  height: 24rem;
+  right: -10rem;
+  bottom: -10rem;
+  border: 1px solid rgba(122, 94, 63, .12);
+}
+
+.subtraction__inner {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 1rem, 1180px);
+  margin: 0 auto;
+}
+
+.subtraction__header {
+  max-width: 780px;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.subtraction__header h2 {
+  margin: .5rem 0 1.5rem;
+  color: var(--brown);
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: clamp(2.2rem, 5vw, 4.6rem);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.12;
+}
+
+.subtraction__header > p:not(.eyebrow):not(.subtraction__statement) {
+  max-width: 690px;
+  margin: .65rem auto;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.9;
+}
+
+.subtraction__statement {
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  color: var(--brown);
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: clamp(1.55rem, 3vw, 2.4rem);
+  line-height: 1.45;
+}
+
+.subtraction__principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.subtraction__card {
+  min-width: 0;
+  padding: clamp(1.6rem, 3.5vw, 2.7rem);
+  border: 1px solid rgba(88, 100, 76, .13);
+  border-radius: 28px;
+  background: rgba(255, 253, 248, .78);
+  box-shadow: 0 22px 60px rgba(69, 58, 40, .065);
+  backdrop-filter: blur(8px);
+}
+
+.subtraction__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.8rem;
+  min-height: 2rem;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: rgba(91, 118, 80, .1);
+  color: #617458;
+  font-size: .76rem;
+  letter-spacing: .14em;
+}
+
+.subtraction__card h3 {
+  margin: 1.35rem 0 1rem;
+  color: var(--brown);
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.4;
+}
+
+.subtraction__card p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+
+.subtraction__flow {
+  margin: clamp(3rem, 7vw, 5.5rem) auto;
+  padding: clamp(2rem, 5vw, 4rem);
+  border-radius: 34px;
+  background: #44523f;
+  color: #f7f4eb;
+  box-shadow: 0 28px 80px rgba(42, 55, 38, .16);
+  text-align: center;
+}
+
+.subtraction__flow .eyebrow {
+  color: #d9e4d1;
+}
+
+.subtraction__flow h3 {
+  max-width: 820px;
+  margin: .6rem auto 2rem;
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.subtraction__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.subtraction__steps span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
+  padding: 1.15rem .75rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .055);
+  line-height: 1.45;
+}
+
+.subtraction__steps small {
+  color: #c9d9c0;
+  font-size: .7rem;
+  letter-spacing: .12em;
+}
+
+.subtraction__flow-note {
+  margin: 1.6rem 0 0;
+  color: #dce5d6;
+}
+
+.subtraction__reflection {
+  max-width: 900px;
+  margin: 0 auto clamp(3rem, 7vw, 5.5rem);
+  padding: clamp(2rem, 5vw, 4rem);
+  border: 0;
+  text-align: center;
+}
+
+.subtraction__reflection p:first-child {
+  margin: 0 0 .75rem;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+}
+
+.subtraction__reflection strong {
+  display: block;
+  color: var(--brown);
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: clamp(1.7rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.subtraction__reflection p:last-child {
+  max-width: 760px;
+  margin: 1.5rem auto 0;
+  color: var(--ink-soft);
+  line-height: 1.95;
+}
+
+.subtraction__closing {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subtraction__closing > p:first-child {
+  color: var(--ink-soft);
+  line-height: 1.95;
+}
+
+.subtraction__purchase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .65rem;
+  margin: 2rem 0;
+}
+
+.subtraction__purchase span {
+  padding: .65rem 1rem;
+  border: 1px solid rgba(86, 113, 78, .16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .62);
+  color: #56684e;
+  font-size: .92rem;
+}
+
+.subtraction__quiet {
+  margin: clamp(2rem, 4vw, 3.2rem) 0 0;
+  color: var(--brown);
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: clamp(1.45rem, 3vw, 2.35rem);
+  line-height: 1.7;
+}
+
+.subtraction__quiet strong {
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .subtraction {
+    padding: 4.5rem 1rem;
+  }
+
+  .subtraction__inner {
+    width: min(100%, 680px);
+  }
+
+  .subtraction__principles {
+    grid-template-columns: 1fr;
+  }
+
+  .subtraction__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .subtraction__flow,
+  .subtraction__card {
+    border-radius: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subtraction * {
+    scroll-behavior: auto;
+  }
+}
