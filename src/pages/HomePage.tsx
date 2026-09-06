@@ -1,4 +1,5 @@
 import { DownloadButtons } from '../components/DownloadButtons'
+import { SubtractionMeditation } from '../components/SubtractionMeditation'
 import { PageShell } from '../components/PageShell'
 import { withBase } from '../utils'
 import { useLanguage } from '../i18n/useLanguage'
@@ -40,6 +41,8 @@ export function HomePage() {
           <span>Just breathe.<br />Slow is beautiful.</span>
         </div>
       </section>
+
+      <SubtractionMeditation />
 
       <section className="section feature-story" id="features" aria-labelledby="timer-title">
         <div className="phone-frame reveal">
