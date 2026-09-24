@@ -52,7 +52,9 @@ test('closed testing page has a static route without exposing a promotion code',
   assert.ok(page.includes('https://play.google.com/apps/testing/com.miracle.quietsloth'))
   assert.ok(page.includes('target="_blank" rel="noopener noreferrer"'))
   assert.ok(page.includes('quiet-sloth-test@googlegroups.com'))
-  assert.ok(page.includes('<a className="primary-button test-button" href="https://groups.google.com/g/quiet-sloth-test" target="_blank" rel="noopener noreferrer">加入封閉測試團</a>'))
+  assert.ok(page.includes("const GOOGLE_GROUP_URL = 'https://groups.google.com/g/quiet-sloth-test'"))
+  assert.ok(page.includes('href={GOOGLE_GROUP_URL}'))
+  assert.ok(page.includes('加入封閉測試團'))
   assert.ok(page.includes("href={withBase('support/')}"))
   assert.doesNotMatch(page, /promoCode|promotionCode|優惠碼\s*[:：=]\s*[A-Z0-9-]{6,}/i)
 })
@@ -226,7 +228,9 @@ test('English, Japanese, Korean, and Thai locales are complete', async () => {
   const footer = await read('src/components/SiteFooter.tsx')
   assert.doesNotMatch(footer, /Coming soon/)
   const downloads = await read('src/components/DownloadButtons.tsx')
-  assert.ok(downloads.includes("currentLocale === 'en' ? 'LINE Stickers'"))
+  assert.ok(downloads.includes("if (link.id === 'lineStickers' && currentLocale === 'en') return 'LINE Stickers'"))
+  assert.ok(downloads.includes("if (link.id === 'googlePlay') return currentLocale === 'zh-TW' ? 'Android 封閉測試' : 'Android Closed Test'"))
+  assert.ok(downloads.includes("link.id === 'googlePlay' ? withBase('test/') : link.href"))
 })
 
 test('home product philosophy section is semantic, accessible, and Traditional Chinese sourced', async () => {
