@@ -134,6 +134,7 @@ export const en = {
     planetWhisper1: 'It is not a trophy.',
     planetWhisper2: 'It simply remembers—',
     planetWhisper3: 'again and again, you came back to yourself.',
+    planetReflection: 'Heart Planet is not for you to chase achievements; it is only when you stop chasing that you realize the days you quietly sat down have already accumulated into a planet.',
     planetStagesLabel: 'Five stages of Heart Planet growth',
     planetStage1: 'Not yet awake',
     planetStage2: 'Spring',

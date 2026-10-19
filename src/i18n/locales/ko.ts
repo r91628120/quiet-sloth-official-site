@@ -143,6 +143,7 @@ export const ko = {
     planetWhisper1: '이건 트로피가 아니에요.',
     planetWhisper2: '그저 조용히 기억하고 있을 뿐이에요—',
     planetWhisper3: '당신이 몇 번이고 다시 자신의 곁으로 돌아왔다는 것을.',
+    planetReflection: '마음의 빛 행성은 성취를 좇기 위한 것이 아니에요. 좇는 일을 멈췄을 때에야, 조용히 앉아 있던 날들이 이미 하나의 행성으로 쌓여 있었음을 깨닫게 됩니다.',
     planetStagesLabel: '마음의 빛 행성의 다섯 성장 단계',
     planetStage1: '아직 깨어나지 않음',
     planetStage2: '봄',

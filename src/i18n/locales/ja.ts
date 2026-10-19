@@ -134,6 +134,7 @@ export const ja = {
     planetWhisper1: 'これはトロフィーではありません。',
     planetWhisper2: 'ただ、静静が覚えているだけ——',
     planetWhisper3: 'あなたが何度も、自分のそばへ戻ってきたことを。',
+    planetReflection: '心の光の星は、達成を追いかけるためのものではありません。追いかけることをやめたとき、静かに座っていた日々が、すでにひとつの星へと積み重なっていたことに気づくのです。',
     planetStagesLabel: '心の光の星、五つの成長段階',
     planetStage1: 'まだ目覚めていない',
     planetStage2: '春',

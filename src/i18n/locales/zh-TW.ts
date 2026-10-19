@@ -131,6 +131,7 @@ export const zhTW = {
     planetWhisper1: '它不是獎盃。',
     planetWhisper2: '它只是靜靜記得——',
     planetWhisper3: '你曾經一次又一次，回到自己身邊。',
+    planetReflection: '心光星球不是為了讓你追逐成就，而是當你不再追逐時，才發現那些安靜坐下來的日子，早已累積成一顆星球。',
     planetStagesLabel: '心光星球五個成長階段',
     planetStage1: '尚未甦醒',
     planetStage2: '春',

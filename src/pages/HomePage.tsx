@@ -134,6 +134,7 @@ export function HomePage() {
             <p>{t('home.planetDescription1')}</p>
             <p>{t('home.planetDescriptionLine2')}<br />{t('home.planetDescriptionLine3')}</p>
             <p className="planet-whisper">{t('home.planetWhisper1')}<br />{t('home.planetWhisper2')}<br />{t('home.planetWhisper3')}</p>
+            <p className="planet-whisper">{t('home.planetReflection')}</p>
           </div>
           <div className="planet-stages" aria-label={t('home.planetStagesLabel')}>
             {planetStages.map(([stage, image], index) => (
