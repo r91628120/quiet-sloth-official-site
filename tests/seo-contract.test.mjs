@@ -13,7 +13,7 @@ const pages = [
   ['privacy/index.html', 'privacy/', '隱私權政策｜靜靜樹懶靜坐日記'],
   ['terms/index.html', 'terms/', '使用條款｜靜靜樹懶靜坐日記'],
   ['health/index.html', 'health/', '健康聲明｜靜靜樹懶靜坐日記'],
-  ['test/index.html', 'test/', '封閉測試體驗｜靜靜樹懶靜坐日記'],
+  ['test/index.html', 'test/', 'Google Play 正式上架｜靜靜樹懶靜坐日記'],
 ]
 
 const read = (path) => readFile(join(root, path), 'utf8')

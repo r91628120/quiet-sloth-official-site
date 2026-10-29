@@ -323,7 +323,7 @@ body:has(.page-hero) .language-switcher { border-color: rgba(74,52,34,.35); back
 }
 
 
-/* Android closed testing recruitment */
+/* Android release information page */
 .test-page__hero .test-hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
 .test-secondary-button { display: inline-flex; align-items: center; justify-content: center; margin-top: 1.5rem; padding: .82rem 1.35rem; border: 1px solid rgba(74,52,34,.28); border-radius: 999px; background: rgba(255,255,255,.5); color: var(--brown); font-weight: 600; text-decoration: none; }
 .test-free-card { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: clamp(1.5rem, 4vw, 3rem); margin: 0 auto 4rem; padding: clamp(1.6rem, 4vw, 3rem); border: 1px solid rgba(129,150,108,.26); border-radius: 1.8rem; background: linear-gradient(135deg, #eef3e8, #fffaf0); box-shadow: 0 16px 42px rgba(72,52,31,.07); }

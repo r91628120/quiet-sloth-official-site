@@ -43,31 +43,33 @@ test('all formal static routes have an HTML entry', async () => {
   }
 })
 
-test('closed testing page has a static route without exposing a promotion code', async () => {
+test('former closed testing route directs visitors to the released Google Play app', async () => {
   const app = await read('src/App.tsx')
   const page = await read('src/pages/TestPage.tsx')
   const vite = await read('vite.config.ts')
   assert.ok(app.includes("'/test': TestPage"))
   assert.ok(vite.includes("test: resolve(import.meta.dirname, 'test/index.html')"))
-  assert.ok(page.includes('https://play.google.com/apps/testing/com.miracle.quietsloth'))
+  assert.ok(page.includes("import { GOOGLE_PLAY_URL } from '../config/links'"))
+  assert.ok(page.includes("t('testRelease.description')"))
+  assert.ok(page.includes('href={GOOGLE_PLAY_URL}'))
   assert.ok(page.includes('target="_blank" rel="noopener noreferrer"'))
-  assert.ok(page.includes('quiet-sloth-test@googlegroups.com'))
-  assert.ok(page.includes("const GOOGLE_GROUP_URL = 'https://groups.google.com/g/quiet-sloth-test'"))
-  assert.ok(page.includes('href={GOOGLE_GROUP_URL}'))
-  assert.ok(page.includes('加入封閉測試團'))
-  assert.ok(page.includes("href={withBase('support/')}"))
-  assert.doesNotMatch(page, /promoCode|promotionCode|優惠碼\s*[:：=]\s*[A-Z0-9-]{6,}/i)
+  assert.doesNotMatch(page, /play\.google\.com\/apps\/testing|groups\.google\.com|quiet-sloth-test@/)
+  const zhTW = await read('src/i18n/locales/zh-TW.ts')
+  assert.ok(zhTW.includes('Android 封閉測試已經結束'))
 })
 
-test('download URLs are centralized and unannounced links remain empty', async () => {
+test('download URLs are centralized and announced store links are available', async () => {
   const config = await read('src/config/links.ts')
   assert.match(config, /export const APP_STORE_URL = 'https:\/\/apps\.apple\.com\/tw\/app\/%E9%9D%9C%E9%9D%9C%E6%A8%B9%E6%87%B6%E9%9D%9C%E5%9D%90%E6%97%A5%E8%A8%98\/id6799450042'/)
   assert.match(config, /export const LINE_STICKERS_URL = 'https:\/\/line\.me\/S\/sticker\/36073945\/\?lang=zh-Hant&utm_source=gnsh_stickerDetail'/)
-  for (const name of ['GOOGLE_PLAY_URL', 'SUPPORT_EMAIL', 'MIRACLE_MIND_URL']) {
+  assert.match(config, /export const GOOGLE_PLAY_URL = 'https:\/\/play\.google\.com\/store\/apps\/details\?id=com\.miracle\.quietsloth'/)
+  for (const name of ['SUPPORT_EMAIL', 'MIRACLE_MIND_URL']) {
     assert.match(config, new RegExp(`export const ${name} = ''`))
   }
   const source = await read('src/pages/HomePage.tsx')
   assert.doesNotMatch(source, /apps\.apple\.com|play\.google\.com|line\.me/)
+  const buttons = await read('src/components/DownloadButtons.tsx')
+  assert.doesNotMatch(buttons, /Android 封閉測試|Android Closed Test|withBase\('test\/'\)/)
 })
 
 test('five-locale structure exposes reviewed Traditional Chinese, English, Japanese, Korean, and Thai content', async () => {
@@ -229,8 +231,9 @@ test('English, Japanese, Korean, and Thai locales are complete', async () => {
   assert.doesNotMatch(footer, /Coming soon/)
   const downloads = await read('src/components/DownloadButtons.tsx')
   assert.ok(downloads.includes("if (link.id === 'lineStickers' && currentLocale === 'en') return 'LINE Stickers'"))
-  assert.ok(downloads.includes("if (link.id === 'googlePlay') return currentLocale === 'zh-TW' ? 'Android 封閉測試' : 'Android Closed Test'"))
-  assert.ok(downloads.includes("link.id === 'googlePlay' ? withBase('test/') : link.href"))
+  assert.doesNotMatch(downloads, /Android 封閉測試|Android Closed Test|withBase\('test\/'\)/)
+  const links = await read('src/config/links.ts')
+  assert.ok(links.includes("export const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.miracle.quietsloth'"))
 })
 
 test('home product philosophy section is semantic, accessible, and Traditional Chinese sourced', async () => {

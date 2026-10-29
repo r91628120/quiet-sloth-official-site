@@ -7,7 +7,11 @@ import { QuietSlothLogo } from './QuietSlothLogo'
 export function SiteFooter() {
   const { currentLocale, t } = useLanguage()
   const contactHref = SUPPORT_EMAIL ? `mailto:${SUPPORT_EMAIL}` : withBase('support/')
-  const labelFor = (link: (typeof downloadLinks)[number]) => link.id === 'lineStickers' && currentLocale === 'en' ? 'LINE Stickers' : link.label
+  const labelFor = (link: (typeof downloadLinks)[number]) => {
+    if (link.id === 'lineStickers' && currentLocale === 'en') return 'LINE Stickers'
+    if (link.id === 'googlePlay') return `${link.label} · ${t('footer.downloadNow')}`
+    return link.label
+  }
 
   return (
     <footer className="site-footer">
@@ -33,9 +37,10 @@ export function SiteFooter() {
         </div>
         <div>
           <h2>{t('footer.download')}</h2>
-          {downloadLinks.map((link) =>
-            link.href ? <a href={link.href} key={link.id}>{labelFor(link)}</a> : <span key={link.id}>{labelFor(link)} · {t('common.comingSoon')}</span>,
-          )}
+          {downloadLinks.map((link) => {
+            const href: string = link.href
+            return href ? <a href={href} key={link.id}>{labelFor(link)}</a> : <span key={link.id}>{labelFor(link)} · {t('common.comingSoon')}</span>
+          })}
         </div>
         <div>
           <h2>{t('language.heading')}</h2>
