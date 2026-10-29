@@ -72,6 +72,15 @@ test('download URLs are centralized and announced store links are available', as
   assert.doesNotMatch(buttons, /Android 封閉測試|Android Closed Test|withBase\('test\/'\)/)
 })
 
+test('home world showcase keeps the released app and LINE stickers only', async () => {
+  const home = await read('src/pages/HomePage.tsx')
+  const css = await read('src/styles.css')
+  assert.equal((home.match(/<article><span>0[12]<\/span>/g) ?? []).length, 2)
+  assert.ok(home.includes("t('home.worldStickersAvailability')"))
+  assert.doesNotMatch(home, /worldGoods|worldGoodsDescription|common\.comingSoon/)
+  assert.match(css, /\.world-cards \{ display: grid; grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); gap: 1\.2rem; \}/)
+})
+
 test('five-locale structure exposes reviewed Traditional Chinese, English, Japanese, Korean, and Thai content', async () => {
   const source = await read('src/i18n/index.ts')
   for (const locale of ['zh-TW', 'en', 'ja', 'ko', 'th']) assert.ok(source.includes(`'${locale}'`))
@@ -243,7 +252,7 @@ test('home product philosophy section is semantic, accessible, and Traditional C
   assert.match(home, /<section className="section philosophy" aria-labelledby="philosophy-title">/)
   assert.equal((home.match(/<article className="philosophy-card reveal">/g) ?? []).length, 4)
   assert.ok(home.includes('<h2 id="philosophy-title">'))
-  assert.equal((home.match(/<h3>/g) ?? []).length >= 7, true)
+  assert.equal((home.match(/<h3>\{t\('home\.philosophyCard[1-4]Title'\)\}<\/h3>/g) ?? []).length, 4)
   assert.ok(home.includes('aria-hidden="true">01</span>'))
   assert.ok(home.includes("aria-label={t('home.philosophyCard3FlowLabel')}"))
   assert.ok(home.indexOf('className="section philosophy"') > home.indexOf('className="world"'))

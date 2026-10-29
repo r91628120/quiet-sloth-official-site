@@ -166,8 +166,7 @@ export function HomePage() {
           </div>
           <div className="world-cards">
             <article><span>01</span><h3>{t('home.worldApp')}</h3><p>iPhone / Android</p><small>{t('home.worldAppAvailability')}</small></article>
-            <article><span>02</span><h3>{t('home.worldStickers')}</h3><p>{t('home.worldStickersDescription')}</p><small>{t('common.comingSoon')}</small></article>
-            <article><span>03</span><h3>{t('home.worldGoods')}</h3><p>{t('home.worldGoodsDescription')}</p><small>{t('common.comingSoon')}</small></article>
+            <article><span>02</span><h3>{t('home.worldStickers')}</h3><p>{t('home.worldStickersDescription')}</p><small>{t('home.worldStickersAvailability')}</small></article>
           </div>
         </div>
       </section>

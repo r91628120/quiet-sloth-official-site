@@ -171,6 +171,7 @@ export const th = {
     worldAppAvailability: 'พร้อมให้ดาวน์โหลดแล้วบน App Store และ Google Play',
     worldStickers: 'สติกเกอร์ LINE ของ Quiet Sloth',
     worldStickersDescription: 'เติมความสงบเล็ก ๆ ลงในบทสนทนาในแต่ละวัน',
+    worldStickersAvailability: 'วางจำหน่ายแล้ว',
     worldGoods: 'ของน่ารักจาก Quiet Sloth',
     worldGoodsDescription: 'สติกเกอร์ ตุ๊กตา และเพื่อนตัวน้อยอีกมากมาย',
     finalImageAlt: 'Quiet Sloth รออยู่ใต้ต้นไม้ใหญ่ท่ามกลางแสงยามเช้า เพื่ออยู่เป็นเพื่อนคุณในการนั่งสมาธิ',

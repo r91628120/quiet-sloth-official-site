@@ -159,7 +159,7 @@ h1, h2, h3, p { margin-top: 0; }
 .text-link { display: inline-flex; gap: .6rem; margin-top: 1rem; color: var(--sage-dark); font-weight: 600; text-underline-offset: .35rem; }
 
 .world { background: var(--paper); }
-.world-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.world-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
 .world-cards article { min-height: 260px; padding: 2rem; border: 1px solid var(--line); border-radius: 1.5rem; background: var(--cream); }
 .world-cards article > span { color: var(--gold); font-family: serif; font-size: .8rem; }
 .world-cards h3 { margin-top: 4.5rem; font-size: 1.5rem; }

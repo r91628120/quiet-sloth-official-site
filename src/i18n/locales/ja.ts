@@ -161,6 +161,7 @@ export const ja = {
     worldAppAvailability: 'App Store と Google Play で配信中',
     worldStickers: '静静 LINEスタンプ',
     worldStickersDescription: 'いつもの会話に、少しの静けさを。',
+    worldStickersAvailability: '好評発売中',
     worldGoods: '静静の小さなアイテム',
     worldGoodsDescription: 'ステッカーやぬいぐるみなど、やさしいおともだち。',
     finalImageAlt: '朝の光の木の下で、一緒に瞑想するあなたを待つ静静',

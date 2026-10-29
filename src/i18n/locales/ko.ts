@@ -171,6 +171,7 @@ export const ko = {
     worldAppAvailability: 'App Store와 Google Play에서 지금 이용할 수 있어요',
     worldStickers: 'Quiet Sloth LINE 스티커',
     worldStickersDescription: '일상의 대화 속에도 작은 고요를 전해 보세요.',
+    worldStickersAvailability: '정식 출시되었습니다',
     worldGoods: 'Quiet Sloth 굿즈',
     worldGoodsDescription: '스티커와 인형, 그리고 더 많은 작은 동행.',
     finalImageAlt: '아침 햇살 속 큰 나무 아래에서 함께 명상하기를 기다리는 Quiet Sloth',

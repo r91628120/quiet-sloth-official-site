@@ -158,6 +158,7 @@ export const zhTW = {
     worldAppAvailability: '已在 App Store 與 Google Play 上架',
     worldStickers: '靜靜 LINE 貼圖',
     worldStickersDescription: '把一點安靜帶進日常對話。',
+    worldStickersAvailability: '已正式上架',
     worldGoods: '靜靜小物',
     worldGoodsDescription: '貼紙、玩偶與更多陪伴。',
     philosophyEyebrow: 'Product Philosophy',

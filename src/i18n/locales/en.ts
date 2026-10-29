@@ -161,6 +161,7 @@ export const en = {
     worldAppAvailability: 'Now available on the App Store and Google Play',
     worldStickers: 'Quiet Sloth LINE Stickers',
     worldStickersDescription: 'Bring a little quiet into everyday conversations.',
+    worldStickersAvailability: 'Now available',
     worldGoods: 'Quiet Sloth Keepsakes',
     worldGoodsDescription: 'Stickers, plush friends, and more gentle company.',
     finalImageAlt: 'Quiet Sloth waiting beneath a tree in the morning light to meditate with you',
