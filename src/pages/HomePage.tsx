@@ -74,6 +74,31 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="section release-update" aria-labelledby="release-update-title">
+        <div className="release-update__heading reveal">
+          <p className="eyebrow">{t('home.releaseUpdateEyebrow')}</p>
+          <h2 id="release-update-title">{t('home.releaseUpdateTitle')}</h2>
+          <p>{t('home.releaseUpdateIntro')}</p>
+        </div>
+        <div className="release-update__cards">
+          <article className="reveal">
+            <p>Android · 1.0.67</p>
+            <h3>{t('home.releaseAndroidTitle')}</h3>
+            <ul>
+              {['releaseAndroidFeature1', 'releaseAndroidFeature2', 'releaseAndroidFeature3', 'releaseAndroidFeature4', 'releaseAndroidFeature5'].map((key) => <li key={key}>{t(`home.${key}`)}</li>)}
+            </ul>
+          </article>
+          <article className="reveal">
+            <p>iOS · 1.0.61</p>
+            <h3>{t('home.releaseIosTitle')}</h3>
+            <ul>
+              {['releaseIosFeature1', 'releaseIosFeature2', 'releaseIosFeature3'].map((key) => <li key={key}>{t(`home.${key}`)}</li>)}
+            </ul>
+          </article>
+        </div>
+        <p className="release-update__note reveal">{t('home.releaseUpdateNote')}</p>
+      </section>
+
       <section className="section closing" aria-labelledby="closing-title">
         <div className="section-copy reveal">
           <p className="eyebrow">{t('home.closingEyebrow')}</p>

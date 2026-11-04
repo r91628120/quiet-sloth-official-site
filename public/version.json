@@ -1,5 +1,13 @@
 {
-  "latestVersion": "1.0.59",
+  "latestVersion": "1.0.61",
   "minimumVersion": "1.0.0",
-  "updateUrl": "https://apps.apple.com/app/id6799450042"
+  "updateUrl": "https://apps.apple.com/app/id6799450042",
+  "ios": {
+    "latestVersion": "1.0.61",
+    "updateUrl": "https://apps.apple.com/app/id6799450042"
+  },
+  "android": {
+    "latestVersion": "1.0.67",
+    "updateUrl": "https://play.google.com/store/apps/details?id=com.miracle.quietsloth"
+  }
 }
