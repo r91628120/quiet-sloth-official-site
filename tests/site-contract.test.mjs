@@ -198,19 +198,19 @@ test('i18n runtime contracts provide safe fallback, persistence, and five langua
   assert.ok(main.includes('<LanguageProvider><App /></LanguageProvider>'))
 })
 
-test('English, Japanese, Korean, and Thai locales are complete', async () => {
+test('English, Japanese, Korean, and Thai locales are complete, including product philosophy', async () => {
   const zhTW = localeEntries(await read('src/i18n/locales/zh-TW.ts'), 'zhTW')
   const english = localeEntries(await read('src/i18n/locales/en.ts'), 'en')
   const japanese = localeEntries(await read('src/i18n/locales/ja.ts'), 'ja')
   const korean = localeEntries(await read('src/i18n/locales/ko.ts'), 'ko')
   const thai = localeEntries(await read('src/i18n/locales/th.ts'), 'th')
-  const traditionalChineseOnlyKeys = [...zhTW.keys()].filter((key) => key.startsWith('home.philosophy'))
-  const sharedKeys = [...zhTW.keys()].filter((key) => !traditionalChineseOnlyKeys.includes(key))
-  assert.equal(traditionalChineseOnlyKeys.length, 32)
+  const sharedKeys = [...zhTW.keys()]
+  const philosophyKeys = sharedKeys.filter((key) => key.startsWith('home.philosophy'))
+  assert.equal(philosophyKeys.length, 32)
   assert.deepEqual([...english.keys()], sharedKeys)
   assert.equal([...english.values()].filter((value) => value.trim().length === 0).length, 0)
   assert.equal([...english.keys()].filter((key) => !zhTW.has(key)).length, 0)
-  assert.deepEqual([...zhTW.keys()].filter((key) => !english.has(key)), traditionalChineseOnlyKeys)
+  assert.deepEqual([...zhTW.keys()].filter((key) => !english.has(key)), [])
   assert.deepEqual([...english].filter(([, value]) => /[\u3400-\u9fff]/u.test(value)), [])
   assert.equal(english.get('brand.name'), 'Quiet Sloth Meditation Journal')
   assert.equal(english.get('home.closingEyebrow'), 'Gentle Closing')
@@ -222,18 +222,21 @@ test('English, Japanese, Korean, and Thai locales are complete', async () => {
   assert.deepEqual([...japanese.keys()], sharedKeys)
   assert.equal([...japanese.values()].filter((value) => value.trim().length === 0).length, 0)
   assert.equal([...japanese.keys()].filter((key) => !zhTW.has(key)).length, 0)
-  assert.deepEqual([...zhTW.keys()].filter((key) => !japanese.has(key)), traditionalChineseOnlyKeys)
+  assert.deepEqual([...zhTW.keys()].filter((key) => !japanese.has(key)), [])
   assert.deepEqual([...japanese].filter(([, value]) => /靜|樹懶|繁體|隱私權|裝置端/u.test(value)), [])
   assert.deepEqual([...korean.keys()], sharedKeys)
   assert.equal([...korean.values()].filter((value) => value.trim().length === 0).length, 0)
   assert.equal([...korean.keys()].filter((key) => !zhTW.has(key)).length, 0)
-  assert.deepEqual([...zhTW.keys()].filter((key) => !korean.has(key)), traditionalChineseOnlyKeys)
+  assert.deepEqual([...zhTW.keys()].filter((key) => !korean.has(key)), [])
   assert.deepEqual([...korean].filter(([, value]) => /[\u3040-\u30ff]|靜|樹懶|奇蹟|心/u.test(value)), [])
   assert.deepEqual([...thai.keys()], sharedKeys)
   assert.equal([...thai.values()].filter((value) => value.trim().length === 0).length, 0)
   assert.equal([...thai.keys()].filter((key) => !zhTW.has(key)).length, 0)
-  assert.deepEqual([...zhTW.keys()].filter((key) => !thai.has(key)), traditionalChineseOnlyKeys)
+  assert.deepEqual([...zhTW.keys()].filter((key) => !thai.has(key)), [])
   assert.deepEqual([...thai].filter(([, value]) => /[\u3040-\u30ff\u3400-\u9fff]/u.test(value)), [])
+  for (const locale of [english, japanese, korean, thai]) {
+    for (const key of philosophyKeys) assert.ok(locale.get(key)?.trim(), `${key} must be translated in every locale`)
+  }
   const switcher = await read('src/components/LanguageSwitcher.tsx')
   assert.doesNotMatch(switcher, /location|history|navigate|reload/)
   const footer = await read('src/components/SiteFooter.tsx')
@@ -245,7 +248,7 @@ test('English, Japanese, Korean, and Thai locales are complete', async () => {
   assert.ok(links.includes("export const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.miracle.quietsloth'"))
 })
 
-test('home product philosophy section is semantic, accessible, and Traditional Chinese sourced', async () => {
+test('home product philosophy section is semantic, accessible, and locale sourced', async () => {
   const home = await read('src/pages/HomePage.tsx')
   const css = await read('src/styles.css')
   const zhTW = localeEntries(await read('src/i18n/locales/zh-TW.ts'), 'zhTW')
@@ -259,6 +262,7 @@ test('home product philosophy section is semantic, accessible, and Traditional C
   assert.ok(home.indexOf('className="section philosophy"') < home.indexOf('className="final-cta"'))
   assert.equal(zhTW.get('home.philosophyTitle'), '我們把靜坐，留給你自己')
   assert.equal(zhTW.get('home.philosophyCard4Emphasis'), '今天，謝謝你回來了。')
+  assert.doesNotMatch(home, /我們把靜坐，留給你自己|每個人，都可以有自己的靜坐方式|你的靜坐，由你自己決定/)
   assert.ok(css.includes('.philosophy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));'))
   assert.ok(css.includes('.philosophy-grid { grid-template-columns: 1fr; }'))
 })
